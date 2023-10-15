@@ -1,0 +1,69 @@
+---
+title: "Milestone_5"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+title: "Milestone_5"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+
+
+```{r}
+titanic = read.csv("titanic.csv")
+colnames(titanic)
+dim(titanic)
+
+age = titanic$Age
+```
+
+# Age Analysis
+```{r}
+age_mean <- mean(age, na.rm=TRUE)
+age_mean
+age_median <- median(age, na.rm=TRUE)
+age_median
+age_variance <- var(age, na.rm=TRUE)
+age_variance
+age_sd <- sd(age, na.rm=TRUE)
+age_sd
+```
+The Age histogram mostly resembles the normal distribution with minor skewing 
+to the right. These large outlier ages will bring the mean slightly higher 
+than the median. The mean age is 29.7 while the median age is 28 becuase of the 
+minor outliers. The standard deviation of 14 means that the majority of people 
+on board were between the age of 16 - 44 since the mean is approximately 30. 
+This shows that the age values are spread out from one another.
+
+
+# Fare Analysis
+```{r}
+fare = titanic$Fare
+fare_mean = mean(fare)
+fare_mean
+fare_median = median(fare)
+fare_median
+fare_variance = var(fare)
+fare_variance
+fare_sd = sd(fare)
+fare_sd
+```
+
+
+The fare data is also skewed right like the age histogram. Here though the 
+outlier fares are significantly larger than the rest of the data. This is why
+the mean is more than two times the median. The standard deviation of 49 when
+the mean is 32 is really high and suggests that the data is heavily spread out.
+Alot of this is cause by the one trip over $500.
+
+###
+
