@@ -1,0 +1,45 @@
+---
+title: "Milestone_6"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+titanic = read.csv("titanic.csv")
+colnames(titanic)
+dim(titanic)
+
+```
+
+# Age vs Ticket Price
+
+```{r}
+png("age_vs_fare")
+titanic <- na.omit(titanic)
+age = titanic$Age
+fare = titanic$Fare
+
+plot(age, fare,
+     xlab = "Age",
+     ylab = "Fare",
+     main = "Age vs Fare for Titanic Passengers",
+     col = "red"
+     )
+```
+
+
+```{r}
+cor(age, fare)
+```
+We can see that there isn't much correlation, as the data points are spread out from each other. The majority of the data points
+are between 0 - 100 on the Y-Axis which indicates the price for the ticket. This means that the vast majority of people paid 
+less than $100 for their ticket. Even still there are still to many data points scattered around that region to form any 
+significant correlation between the two variables. Using R, the correlation coefficient is .09, which supports what the 
+histogram shows.
+
+
