@@ -1,0 +1,30 @@
+---
+title: "Milestone_7"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+titanic = read.csv("titanic.csv")
+colnames(titanic)
+```
+
+```{r}
+age_confidence_95 <- t.test(titanic$Age, conf=.95)$conf.int
+age_confidence_95
+```
+
+The 95% confidence interval for the mean of passengers Age's is [28.6, 30.7]. 
+This is a small confidence interval, which means that it is very precise. Because the confidence interval is so small we can trust that our estimate of the mean is accurate. The median (28) also lies within the confidence interval.
+
+```{r}
+fare_confidence_95 <- t.test(titanic$Fare, conf=.95)$conf.int
+fare_confidence_95
+```
+The 95% confidence interval for the mean of passengers Fare is [28.9, 35.4]. 
+This is a relatively small confidence interval, which like the Age column, means that it is very precise and we can trust its accuracy. In this variable the median (14.45) doesn't lie within the confidence interval.
