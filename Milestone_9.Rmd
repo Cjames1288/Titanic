@@ -1,0 +1,48 @@
+---
+title: "Milestone_8"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+titanic = read.csv("titanic.csv")
+```
+
+```{r}
+contingency_table <- table(titanic$Sex, titanic$Survived)
+print(contingency_table)
+result <- prop.test(contingency_table)
+print(result)
+```
+The P-value for the proportion testing is very low. 
+P = 2.2e-16
+
+Given this P-value we must reject the null hypothesis that the proportions of female survivors is equal to the proportion of male survivors. 
+Female passengers had a statistically significant higher chance of survival. 
+
+
+
+
+Test 2:
+
+
+```{r}
+
+survived_age <- titanic$Age[titanic$Survived == 1]
+non_survived_age <- titanic$Age[titanic$Survived == 0]
+
+
+t_test_result <- t.test(survived_age, non_survived_age)
+t_test_result
+```
+With a P-value of .04119 we reject the null hypothesis that the true difference in means are equal to 0. 
+The alternatice hypothesis is supported, which states that the true difference in means are not equal to 0. 
+The mean of the ages are suvivors are lower than does who did not survive.
+
+
+
