@@ -1,0 +1,34 @@
+---
+title: "Milestone 10"
+author: "Charles James"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  word_document: default
+--- 
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+options(width=90)
+
+library("ggplot2")
+titanic = read.csv("titanic.csv")
+```
+
+
+```{r}
+p <-ggplot(titanic, aes(x = Pclass, fill = factor(Survived))) +
+  geom_bar(stat = "count") +
+  labs(title = "Survival by Passenger Class",
+       x = "Passenger Class",
+       y = "Count") +
+  
+  scale_fill_manual(values = c("#808080", "#8FBC8F"), 
+                    name = "Survival",
+                    labels = c("Died", "Survived")) +
+  theme(plot.title = element_text(hjust = 0.5))
+p
+
+ggsave("survival_plot.png", plot = p, width = 10, height = 6, units = "in", dpi = 300)
+```
+Above is a stacked bar graph of the different classes showing the survival proportions. Several things stand out to me. The total size of the 3rd class bar is almost bigger than the two other classes combined. And the amount of people who perished (top stack) in 3rd class is almost larger the total number of people in both classes combined. Finally we can see that 3rd Class has much larger grey bar indicating more non survivors than the other classes.
